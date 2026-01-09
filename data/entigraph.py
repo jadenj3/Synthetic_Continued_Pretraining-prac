@@ -130,6 +130,6 @@ def generate_synthetic_data_for_document(document_index: str, model_name: str,):
 
 if __name__ == '__main__':
     # seq 0 264 | xargs -P 265 -I {} sh -c 'python data/entigraph.py {} > data/dataset/log/log_gpt4turbo_{}.txt 2>&1'
-    model_name = "gpt-4-turbo"
+    model_name = "gpt-5-mini"
     document_index = int(sys.argv[1])
     generate_synthetic_data_for_document(document_index, model_name)

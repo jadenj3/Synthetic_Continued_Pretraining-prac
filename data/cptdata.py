@@ -3,11 +3,12 @@ from typing import Dict
 import numpy as np
 import torch
 
-def _get_bin(task_name: str, split: str):
+def _get_bin(task_name: str, split: str, custom_dataset = ""):
     assert task_name in ['quality', 'rehersal', 'instruct']
     bin_data_dir = 'data/dataset/bins'
     implemented_quality_split = {
         'entigraph': f'{bin_data_dir}/quality_all-entigraphgpt-4-turbo.bin',
+        'custom': f'{bin_data_dir}/{custom_dataset}.bin',
     }
     implemented_rehersal_split = {
         'rpj-train': f'{bin_data_dir}/togethercomputer_RedPajama_Data_1T_Sample_train.bin',

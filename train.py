@@ -17,6 +17,8 @@ class TrainingConfig:
     rehersal_rate: float
     model_name: str
     subsample_ratio: float
+    split: str = field(default="entigraph")
+    custom_dataset: str = field(default="")
     wandb_project: Optional[str] = field(default="synthetic-continued-pretraining")
 
     def __post_init__(self):

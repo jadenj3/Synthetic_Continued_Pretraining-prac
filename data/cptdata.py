@@ -72,8 +72,8 @@ def get_task_data_module(task_name: str,
                          block_size: int,
                          rehersal_rate: float,
                          subsample_ratio: float,
-                         split,
-                         custom_dataset = "",
+                         split: str = "entigraph",
+                         custom_dataset: str = "",
                          **kwargs):
     if task_name == 'quality':
         train = CPTDataset(block_size, rehersal_rate, subsample_ratio, split, custom_dataset)

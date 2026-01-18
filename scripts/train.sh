@@ -2,6 +2,8 @@
 # setting up default hyperparameters
 subsample_ratio=1.0 # change this parameter to run the scaling plot
 model_name="meta-llama/Meta-Llama-3-8B"
+split="entigraph"
+custom_dataset=""
 # Parse command-line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -14,6 +16,8 @@ while [[ $# -gt 0 ]]; do
         --task_name) task_name="$2"; shift 2 ;;
         --subsample_ratio) subsample_ratio="$2"; shift 2 ;;
         --model_name) model_name="$2"; shift 2 ;;
+        --split) split="$2"; shift 2 ;;
+        --custom_dataset) custom_dataset="$2"; shift 2 ;;
         --run_eval) run_eval=true; shift ;;
         *) echo "Unknown parameter: $1"; exit 1 ;;
     esac
@@ -44,6 +48,8 @@ torchrun --nproc_per_node=$gpu_count  train.py \
     --subsample_ratio=$subsample_ratio \
     --overwrite_output_dir=True \
     --task_name=$task_name \
+    --split=$split \
+    --custom_dataset=$custom_dataset \
     --logging_steps=1 \
     --run_name=$run_name \
     --bf16=True \

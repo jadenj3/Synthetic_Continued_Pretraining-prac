@@ -4,6 +4,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from typing import List
 import numpy as np
 from transformers import AutoTokenizer
+from datasets import load_dataset
 import random
 import glob
 from tqdm import tqdm
@@ -54,6 +55,24 @@ def tokenize_quality_graph(model_name: str):
     quality = _get_quality_graph(model_name)
     write_to_memmap_single(tokenize_list(quality), f'quality_all-entigraph{model_name}.bin')
 
+def _get_quality_graph_from_hf() -> List[str]:
+    """Download and extract entigraph data from HuggingFace dataset."""
+    ds = load_dataset("zitongyang/entigraph-quality-corpus", split="train")
+    result = []
+    for row in tqdm(ds, desc="Extracting entigraph chunks"):
+        chunks = row["entigraph"].split("<|entigraphseptoekn|>")
+        result.extend(chunks)
+    return result
+
+def tokenize_quality_graph_hf():
+    """Download from HuggingFace and tokenize the entigraph dataset."""
+    quality = _get_quality_graph_from_hf()
+    write_to_memmap_single(tokenize_list(quality), 'quality_all-entigraphgpt-4-turbo.bin')
+
 if __name__ == '__main__':
-    # Writing to data/dataset/bins/quality_all-graphgpt-4-turbo.bin with length 599385906 (599M)
-    tokenize_quality_graph('gpt-4-turbo')
+    # Usage: python data/tokenize_entigraph.py [--hf]
+    # --hf: Download from HuggingFace instead of using local JSON files
+    if len(sys.argv) > 1 and sys.argv[1] == '--hf':
+        tokenize_quality_graph_hf()
+    else:
+        tokenize_quality_graph('gpt-4-turbo')

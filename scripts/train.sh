@@ -53,6 +53,7 @@ torchrun --nproc_per_node=$gpu_count  train.py \
     --logging_steps=1 \
     --run_name=$run_name \
     --bf16=True \
+    --gradient_checkpointing=True \
     --output_dir=$output_dir \
     --weight_decay=$wd \
     --warmup_ratio=$warmup \

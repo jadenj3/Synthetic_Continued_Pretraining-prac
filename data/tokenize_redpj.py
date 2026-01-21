@@ -24,6 +24,8 @@ class TokenizeConfig:
             self.text_key = 'text'
         elif self.load_dataset_path == 'togethercomputer/RedPajama-Data-1T-Sample':
             self.text_key = 'text'
+        elif self.load_dataset_path == 'ZengXiangyu/RedPajama-Data-1T-Sample':
+            self.text_key = 'text'
         else:
             raise NotImplementedError('Only support RedPajama-Data-1T and RedPajama-Data-V2')
 

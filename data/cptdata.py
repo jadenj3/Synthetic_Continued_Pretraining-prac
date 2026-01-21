@@ -11,8 +11,8 @@ def _get_bin(task_name: str, split: str, custom_dataset = ""):
         'custom': f'{bin_data_dir}/{custom_dataset}.bin',
     }
     implemented_rehersal_split = {
-        'rpj-train': f'{bin_data_dir}/togethercomputer_RedPajama_Data_1T_Sample_train.bin',
-        'rpj-test': f'{bin_data_dir}/togethercomputer_RedPajama_Data_1T_Sample_test.bin'
+        'rpj-train': f'{bin_data_dir}/ZengXiangyu_RedPajama_Data_1T_Sample_train.bin',
+        'rpj-test': f'{bin_data_dir}/ZengXiangyu_RedPajama_Data_1T_Sample_test.bin'
     }
     implemented_instruct_split = {
         'ultrachat-train': f'{bin_data_dir}/ultrachat_train.bin',

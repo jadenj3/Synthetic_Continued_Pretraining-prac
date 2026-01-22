@@ -4,6 +4,7 @@ subsample_ratio=1.0 # change this parameter to run the scaling plot
 model_name="meta-llama/Meta-Llama-3-8B"
 split="entigraph"
 custom_dataset=""
+resume_from_checkpoint=""
 # Parse command-line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -18,6 +19,7 @@ while [[ $# -gt 0 ]]; do
         --model_name) model_name="$2"; shift 2 ;;
         --split) split="$2"; shift 2 ;;
         --custom_dataset) custom_dataset="$2"; shift 2 ;;
+        --resume_from_checkpoint) resume_from_checkpoint="$2"; shift 2 ;;
         --run_eval) run_eval=true; shift ;;
         *) echo "Unknown parameter: $1"; exit 1 ;;
     esac
@@ -64,4 +66,5 @@ torchrun --nproc_per_node=$gpu_count  train.py \
     --lr_scheduler_type="cosine" \
     --log_level="info" \
     --fsdp="hybrid_shard auto_wrap" \
-    --fsdp_config="scripts/config/fsdp_config.json"
+    --fsdp_config="scripts/config/fsdp_config.json" \
+    ${resume_from_checkpoint:+--resume_from_checkpoint=$resume_from_checkpoint}

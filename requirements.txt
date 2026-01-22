@@ -3,7 +3,7 @@ torch==2.3.1
 torchaudio==2.3.1
 torchvision==0.18.1
 transformers==4.43.3
-wandb==0.17.3
+wandb
 datasets==2.20.0
 accelerate==0.31.0
 vllm==0.5.3.post1
@@ -17,4 +17,4 @@ langchain_community==0.2.4
 langchain_core==0.2.40
 langchain_openai==0.1.20
 langchain_text_splitters==0.2.0
-faiss-gpu==1.7.2
+faiss-gpu

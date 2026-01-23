@@ -8,6 +8,7 @@ def _get_bin(task_name: str, split: str, custom_dataset = ""):
     bin_data_dir = 'data/dataset/bins'
     implemented_quality_split = {
         'entigraph': f'{bin_data_dir}/quality_all-entigraphgpt-4-turbo.bin',
+        'source': f'{bin_data_dir}/quality_source.bin',
         'custom': f'{bin_data_dir}/{custom_dataset}.bin',
     }
     implemented_rehersal_split = {

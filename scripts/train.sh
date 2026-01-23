@@ -30,9 +30,9 @@ pretty_name=$(echo "$pretty_name" | sed 's/-//g')
 grad_acc=$((bs / 8))
 # Then, use an if-else statement to set the run_name
 if [ "$subsample_ratio" = "1.0" ]; then
-    run_name="${task_name}-lr${lr}-rr${rr}-epochs${epochs}-bs${bs}-wd${wd}-warmup${warmup}-${pretty_name}"
+    run_name="${task_name}-lr${lr}-rr${rr}-epochs${epochs}-bs${bs}-wd${wd}-warmup${warmup}-${pretty_name}-$(date +%Y%m%d_%H%M%S)"
 else
-    run_name="scaling-subsample_ratio${subsample_ratio}-${task_name}-lr${lr}-rr${rr}-epochs${epochs}-bs${bs}-wd${wd}-warmup${warmup}-${pretty_name}"
+    run_name="scaling-subsample_ratio${subsample_ratio}-${task_name}-lr${lr}-rr${rr}-epochs${epochs}-bs${bs}-wd${wd}-warmup${warmup}-${pretty_name}-$(date +%Y%m%d_%H%M%S)"
 fi
 echo "Running experiment with run name: $run_name"
 output_dir="ckpts/${run_name}"

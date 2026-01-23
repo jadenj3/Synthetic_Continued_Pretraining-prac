@@ -16,7 +16,7 @@ class TrainingConfig:
     block_size: int
     rehersal_rate: float
     model_name: str
-    subsample_ratio: float
+    subsample_ratio: float #test
     split: str = field(default="entigraph")
     custom_dataset: str = field(default="")
     wandb_project: Optional[str] = field(default="synthetic-continued-pretraining")

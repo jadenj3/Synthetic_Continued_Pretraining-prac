@@ -44,7 +44,7 @@ async def generate_with_gemini(
     prompt_file: str,
     input_folder: str,
     output_folder: str,
-    model: str = "gemini-2.0-flash",
+    model: str = "gemini-2.5-flash-lite",
     batch_size: int = 10
 ):
     # Add timestamp suffix to output folder

@@ -82,7 +82,7 @@ if __name__ == '__main__':
     parser.add_argument('--prompt', required=True, help='Path to prompt file')
     parser.add_argument('--input_folder', required=True, help='Folder with input documents')
     parser.add_argument('--output_folder', required=True, help='Base folder for output (timestamp added)')
-    parser.add_argument('--model', default='gemini-2.0-flash', help='Gemini model name')
+    parser.add_argument('--model', default='gemini-2.5-flash-lite', help='Gemini model name')
     parser.add_argument('--batch_size', type=int, default=10, help='Number of concurrent API calls')
     args = parser.parse_args()
 

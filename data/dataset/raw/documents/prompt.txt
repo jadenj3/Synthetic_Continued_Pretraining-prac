@@ -1,0 +1,129 @@
+Using a dataset I will provide, construct a sentence DAG that preserves semantic meaning. The data will be explicitly re-arranged in different permutations that are valid in the DAG. For example:
+
+<start_dag>
+
+{
+  "graph_metadata": {
+    "root_id": "S1",
+    "description": "Climate and Meteorological Dynamics of the Sea of Japan"
+  },
+  "nodes": [
+    {
+      "id": "S1",
+      "content": "The sea climate has warm waters and monsoons.",
+      "type": "root"
+    },
+    {
+      "id": "S2",
+      "content": "This combination results in strong evaporation.",
+      "type": "process"
+    },
+    {
+      "id": "S3",
+      "content": "Strong evaporation is noticeable Oct-Mar when NW monsoon brings cold/dry air.",
+      "type": "condition"
+    },
+    {
+      "id": "S4",
+      "content": "Evaporation is blown south, causing snowfall in western Japan.",
+      "type": "result"
+    },
+    {
+      "id": "S5",
+      "content": "Winter monsoon brings typhoons, storms, and 8-10m waves eroding coasts.",
+      "type": "result"
+    },
+    {
+      "id": "S6",
+      "content": "Tsunami waves have also been recorded in the sea.",
+      "type": "fact"
+    },
+    {
+      "id": "S7",
+      "content": "Monsoon enhances surface water convection down to 30m.",
+      "type": "process"
+    },
+    {
+      "id": "S8",
+      "content": "Coldest months are Jan/Feb: -20°C in north, 5°C in south.",
+      "type": "fact"
+    },
+    {
+      "id": "S9",
+      "content": "The northern one-quarter (Siberian coast/Tartary) freezes for 4-5 months.",
+      "type": "process"
+    },
+    {
+      "id": "S10",
+      "content": "Ice timing varies: starts in Oct, remains seen in June.",
+      "type": "detail"
+    },
+    {
+      "id": "S11",
+      "content": "Ice cover is continuous in bays but forms floating patches in open sea.",
+      "type": "detail"
+    },
+    {
+      "id": "S12",
+      "content": "Ice melting in spring results in cold currents in northern areas.",
+      "type": "result"
+    },
+    {
+      "id": "S13",
+      "content": "In summer, wind weakens and reverses, blowing warm humid air from Pacific.",
+      "type": "process"
+    },
+    {
+      "id": "S14",
+      "content": "Warmest month is Aug: 15°C in north, 25°C in south.",
+      "type": "fact"
+    },
+    {
+      "id": "S15",
+      "content": "Annual precipitation increases from NW (310-500mm) to SE (1500-2000mm).",
+      "type": "fact"
+    },
+    {
+      "id": "S16",
+      "content": "Von Kármán vortices are sometimes observed over the sea.",
+      "type": "phenomenon"
+    },
+    {
+      "id": "S17",
+      "content": "It requires stable low clouds, wind, and isolated tall obstacles.",
+      "type": "condition"
+    },
+    {
+      "id": "S18",
+      "content": "Sea meets conditions with frequent winds and tall islands (Rishiri, etc).",
+      "type": "explanation"
+    }
+  ],
+  "edges": [
+    { "source": "S1", "target": "S3", "relation": "initiates_context" },
+    { "source": "S3", "target": "S2", "relation": "causes" },
+    { "source": "S2", "target": "S4", "relation": "leads_to" },
+    { "source": "S3", "target": "S5", "relation": "causes" },
+    { "source": "S3", "target": "S7", "relation": "causes" },
+    { "source": "S1", "target": "S6", "relation": "related_fact" },
+    { "source": "S1", "target": "S8", "relation": "temporal_shift_winter" },
+    { "source": "S8", "target": "S9", "relation": "consequence" },
+    { "source": "S9", "target": "S10", "relation": "detail" },
+    { "source": "S9", "target": "S11", "relation": "detail" },
+    { "source": "S10", "target": "S12", "relation": "leads_to" },
+    { "source": "S1", "target": "S13", "relation": "temporal_shift_summer" },
+    { "source": "S13", "target": "S14", "relation": "detail" },
+    { "source": "S13", "target": "S15", "relation": "detail" },
+    { "source": "S1", "target": "S16", "relation": "related_phenomenon" },
+    { "source": "S16", "target": "S17", "relation": "requires" },
+    { "source": "S17", "target": "S18", "relation": "fulfills" }
+  ]
+}
+
+<end_dag>
+
+
+
+Note that the graph itself should be entirely between the <start_dag> and <end_dag> tags
+
+Create a DAG from this dataset:

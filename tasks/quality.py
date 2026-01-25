@@ -209,7 +209,7 @@ class QuALITY(Task):
         self.split = split
         if split in ['train', 'dev']:
             self._data = QuALITY._load_split(split)
-            self._create_article()
+            self._create_documents()
         elif split in ['all', '50']:
             self._data = QuALITY._load_split('train') + QuALITY._load_split('dev')
             self._create_documents()

@@ -40,7 +40,8 @@ def main():
     sampling_params = SamplingParams(
         temperature=0.3,
         min_p=0.15,
-        repetition_penalty=1.05
+        repetition_penalty=1.05,
+        max_tokens=1024,
     )
 
     llm = LLM(model="LiquidAI/LFM2-2.6B-Exp")
